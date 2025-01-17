@@ -1,0 +1,35 @@
+<app-header></app-header>
+<div class="main">
+    <div class="profile">
+        <img src="../../assets/doctor3.png" alt="">
+        <div class="information">
+            <h1>Vaishnavi Kiran Malge</h1>
+            <p>vaishnavimalgegmail.com</p>
+            <p>L-78 Sundaram Nagar,Vijapur Road Solapur</p>
+        </div>
+    </div>
+    
+    <div class="tabs-container">
+    <div class="tabs">
+      <button 
+        class="tab-button" 
+        *ngFor="let tab of tabs; let i = index" 
+        [class.active]="i === activeTab"
+        (click)="selectTab(i)">
+        {{ tab.label }}
+      </button>
+    </div>
+  
+    <div class="tab-content">
+      <div 
+        *ngFor="let tab of tabs; let i = index" 
+        class="tab-pane" 
+        [class.active]="i === activeTab">
+        <h2>{{ tab.label }}</h2>
+        <p>{{ tab.content }}</p>
+      </div>
+    </div>
+  </div>
+  
+
+</div>

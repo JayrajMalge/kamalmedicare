@@ -1,0 +1,219 @@
+<div class="container">
+  <div class="sidebar" [class.open]="isSidebarOpen">
+    <div class="sidebar-header">
+      <h3>Update Bar</h3>
+      <button class="close-btn" (click)="toggleSidebar()">Close</button>
+    </div>
+    <ul class="sidebar-menu">
+      <li *ngFor="let item of menuItems" class="menu-item">
+        <a (click)="toggleDropdown(item)">{{ item.name }}</a>
+        <ul class="dropdown" *ngIf="item.isOpen">
+          <li *ngFor="let subItem of item.subItems">
+            <a (click)="openform(subItem.name)">{{ subItem.name }}</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="content">
+    <button class="menu-btn" (click)="toggleSidebar()">☰ Menu</button>
+  </div>
+  <div class="logo">
+    <p>Kamal Medicare</p>
+  </div>
+</div>
+
+<div class="main" *ngIf="operation=='Update Specialization'">
+  <form action="" (submit)="turneditmode('Specialization')">
+    <select name="seleted-doctor" id="" [(ngModel)]="updatevalue">
+      <option value="Jayraj">Jayraj Malge</option>
+      <option value="Vaishnavi">Vaishnavi Malge</option>
+    </select>
+    <input type="submit" name="Update Doctor" value="Update Specialization" >
+ </form>
+</div>
+
+<div class="main" *ngIf="operation=='Update Facilites'">
+  <form action="" (submit)="turneditmode('Facilites')">
+    <select name="seleted-doctor" id="" [(ngModel)]="updatevalue">
+      <option value="Jayraj">Jayraj Malge</option>
+      <option value="Vaishnavi">Vaishnavi Malge</option>
+    </select>
+    <input type="submit" name="Update Doctor" value="Update Facilites" >
+ </form>
+</div>
+
+<div class="main" *ngIf="operation=='Update Doctor'">
+  <form action="" (submit)="turneditmode('Doctor')">
+    <select name="seleted-doctor" id="" [(ngModel)]="updatevalue">
+      <option value="Jayraj">Jayraj Malge</option>
+      <option value="Vaishnavi">Vaishnavi Malge</option>
+    </select>
+    <input type="submit" name="Update Doctor" value="Update Doctor" >
+ </form>  
+</div>
+
+<div class="main" *ngIf="operation=='Delete Doctor'">
+  <form action="" (submit)="turneditmode('Doctor')">
+    <select name="seleted-doctor" id="" [(ngModel)]="updatevalue">
+      <option value="Jayraj">Jayraj Malge</option>
+      <option value="Vaishnavi">Vaishnavi Malge</option>
+    </select>
+    <input type="submit" name="Update Doctor" value="Update Doctor" >
+ </form>  
+</div>
+<div class="main" *ngIf="operation=='Delete Specialization'">
+  <form action="" (submit)="turneditmode('Doctor')">
+    <select name="seleted-doctor" id="" [(ngModel)]="updatevalue">
+      <option value="Jayraj">Jayraj Malge</option>
+      <option value="Vaishnavi">Vaishnavi Malge</option>
+    </select>
+    <input type="submit" name="Update Doctor" value="Update Doctor" >
+ </form>  
+</div>
+<div class="main" *ngIf="operation=='Delete Facilites'">
+  <form action="" (submit)="turneditmode('Doctor')">
+    <select name="seleted-doctor" id="" [(ngModel)]="updatevalue">
+      <option value="Jayraj">Jayraj Malge</option>
+      <option value="Vaishnavi">Vaishnavi Malge</option>
+    </select>
+    <input type="submit" name="Update Doctor" value="Update Doctor" >
+ </form>  
+</div>
+
+<div class="main" *ngIf="operation=='Add Doctor' || isdoctorEditMode">
+  <form [formGroup]="doctor" (submit)="doctorsubmit(operation)">
+    <label for="name">Name</label>
+    <input type="text" formControlName="doc_name" name="name" placeholder="Enter your name">
+
+    <label for="email">Email</label>
+    <input type="text" name="email" formControlName="doc_email" placeholder="Enter your email">
+
+    <label for="phone-no">Phone Number</label>
+    <input type="number" name="phone-no" formControlName="doc_phone" placeholder="Enter your phone number">
+
+    <label for="schedule">Schedule from</label>
+    <input type="time" formControlName="doc_schedulefrom" name="schedule">
+
+    <label for="schedule">Schedule to</label>
+    <input type="time" formControlName="doc_scheduleto" name="schedule">
+
+    <div>
+      <label for="doc_profile">Profile Photo:</label>
+      <input id="doc_profile" type="file" (change)="profilephoto($event)" />
+      <div *ngIf="doctor.get('doc_profile')?.invalid && doctor.get('doc_profile')?.touched">
+        <small>Profile photo is required</small>
+      </div>
+    </div>
+
+    <button (click)="adddoctoreducation()" style="margin-top: 12px; margin-bottom: 12px;" >Add Education</button>
+    <div class="educations" formArrayName="doc_education">
+      <form action="" class="forms" *ngFor="let education of doctor_education.controls; let i = index" [formGroupName]="i">
+         <label for="degree">Degree</label>
+         <input type="text" name="degree" id="" formControlName="degree">
+          <label for="university_name">University Name</label>
+          <input type="text" name="university_name" formControlName="university_name" id="">
+          <label for="from_date">Start</label>
+          <input type="date" name="from_date" formControlName="from_date" id="">
+          <label for="to_date">Complete Date</label>
+          <input type="date" name="to_date" formControlName="to_date" id="">
+      </form>
+    </div>
+
+    <button (click)="addexperience()" style="margin-top: 12px; margin-bottom: 12px;" >Add Experience</button>
+    <div class="Experience" formArrayName="doc_experience">
+      <form action="" class="forms" *ngFor="let experience of doctor_experience.controls; let j = index" [formGroupName]="j">
+         <label for="field">Field</label>
+         <input type="text" name="field" id="" formControlName="field">
+          <label for="hospital_name">Hospital Name</label>
+          <input type="text" name="hospital_name" formControlName="hospital_name" id="">
+          <label for="years">Years</label>
+          <input type="number" name="years" formControlName="years">
+          <label for="from_date">Start</label>
+          <input type="date" name="from_date" formControlName="from_date" id="">
+          <label for="to_date">Complete Date</label>
+          <input type="date" name="to_date" formControlName="to_date" id="">
+      </form>
+    </div>
+    <button type="submit" style="margin-top: 12px; margin-bottom: 12px;" >{{operation.split(" ")[0]}}</button>
+  </form>
+</div>
+
+
+<div class="main" *ngIf="operation=='Add Specialization' || isSpecializationEditMode">
+  <form [formGroup]="specialization">
+    <label for="name">Name</label>
+    <input type="text" name="name" formControlName="name" placeholder="Enter speacailizations name">
+
+    <label for="about">Description</label>
+    <textarea name="about" cols="30" rows="10" formControlName="description" placeholder="Write something about speacailizations"></textarea>
+     
+    <button (click)="addspeacilization()" style="margin-bottom: 10px;">Add Subspeacilization</button>
+    <div class="subspecialization" formArrayName="subspecializationarray">
+      <form class="forms" *ngFor="let subspeacailizations of specaili_zation.controls; let i = index" [formGroupName]="i">
+          <label for="sub-specialization-name">sub-speacailizations name</label>
+          <input type="text" name="sub-specialization-name" formControlName="subspecializationname" placeholder="Enter speacailizations name">
+          <label for="sub-specialization-about">sub specialization Description</label>
+          <textarea name="sub-specialization-about" cols="30" rows="10" formControlName="subspecializationabout" placeholder="Write something about speacailizations"></textarea>
+          <label for="sub-specialization-images">sub-specialization-images</label>
+          <input type="file" multiple name="sub-specialization-images" formControlName="subspecializationimages" (change)="onFileChange($event, i)" >
+          <label for="type">Type</label>
+          <select name="type" id="" formControlName="subspeacializationimgvideotype">
+            <option value=1>Image</option>
+            <option value=2>Video</option>
+          </select>
+        </form>
+    </div>
+    <button type="submit" (click)="specializationsubmit(operation)">{{operation.split(" ")[0]}} </button>
+  </form>
+</div>
+
+
+
+<div class="main" *ngIf="operation=='Add Facilites' || isFacilitesEditModel">
+  <form>
+    <label for="Facilite-name">Facilite Name</label>
+    <input type="text" name="Facilite-name" placeholder="Enter your Facilite name" [(ngModel)]="facilitname">
+
+    <label for="Facilite Description">About</label>
+    <textarea name="about" cols="30" rows="10" placeholder="Write something about Facilite" [(ngModel)]="facilitdescription" ></textarea>
+
+    <label for="Facilite Picture">Add Facilite Picture</label>
+    <input type="file" [(ngModel)]="facilityimages" name="Facilite Picture">
+
+    <button type="submit">{{operation.split(" ")[0]}}</button>
+  </form>
+</div>
+
+
+<div class="main" *ngIf="operation=='Add News'">
+  <form>
+    <label for="News-Title">News Title</label>
+    <input type="text" name="News-Title" placeholder="Enter your News name">
+
+    <label for="News-Description">News Description</label>
+    <textarea name="News-Description" cols="30" rows="10" placeholder="Write something about News"></textarea>
+
+    <label for="News-picture">Add News Picture</label>
+    <input type="file" name="News-picture">
+
+    <button type="submit">{{operation.split(" ")[0]}}</button>
+  </form>
+</div>
+
+
+<div class="main" *ngIf="operation=='Add Blog'">
+  <form>
+    <label for="Blogs-name">Blog Name</label>
+    <input type="text" name="Blogs-name" placeholder="Enter your Blog Title">
+
+    <label for="Blogs-Description">Blog Description</label>
+    <textarea name="Blogs-Description" cols="30" rows="10" placeholder="Write something about Blog"></textarea>
+
+    <label for="Blogs-Picture">Add Blog Picture</label>
+    <input type="file" name="Blogs-Picture">
+
+    <button type="submit">{{operation.split(" ")[0]}}</button>
+  </form>
+</div>

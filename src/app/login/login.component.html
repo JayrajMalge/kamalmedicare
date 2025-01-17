@@ -1,0 +1,33 @@
+<!--<button (click)="logingoogle()">google</button>-->
+
+<div class="login">
+    <img src="../../assets/doctor3.png" alt="">
+    <div class="main default2">
+        <div class="content default1">
+            <h3>Connect with Us</h3>
+            <p>Subscribe and stay up to date on the latest news,
+    
+            get exclusive offers and special gifts.</p>
+        </div>
+        <div class="emailform default1">
+            <label for="">Email Vaildation</label>
+            <form action="" class="loginform default1">
+                <input type="text" placeholder="enter email" name="email" [(ngModel)]="email">
+                <input type="number" placeholder="Enter OTP" name="otp" [hidden]="optstatus" [(ngModel)]="otp">
+                <div class="spinner" [hidden]="sendingotp"></div>
+                <input type="submit" [value]="optbuttontext" [hidden]="!sendingotp" (click)="sendOtp()">
+            </form>
+            <button (click)="logingoogle()" class="default1 default2" >Contine with google</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+

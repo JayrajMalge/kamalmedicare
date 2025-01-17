@@ -1,0 +1,41 @@
+svg{
+    height:35%;
+    width: 35%;
+}
+
+.main{
+    height: auto;
+    min-width: 250px;
+    max-width: 450px;
+    border-radius: 1rem;
+    border:#ffb5b5 0.2rem solid;
+    padding: 3px 3px 3px 3px;
+}
+
+.profile{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: #ffb5b5 2px solid;
+}
+
+.description{
+    width: 100%;
+}
+h3{
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+}
+h3,p{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #132743;
+}
+
+
+@media (max-width : 750px) {
+    .profile{
+        width: 100%;
+    }
+    .description{
+       width: 100%;
+    }
+}
