@@ -7,6 +7,10 @@
     padding-bottom: 5%;
 }
 
+.content{
+    width: 90%;
+    height: auto;
+}
 h1{
     color: #132743;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -29,5 +33,5 @@ p{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: #132743;
     letter-spacing: 0.2rem;
-    line-height: 0.2rem;
+    line-height: 1rem;
 }

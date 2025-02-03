@@ -1,7 +1,9 @@
 <app-header></app-header>
 <div class="main">
-    <h1 [contentEditable]="loginstatus" (input)="onheadingchange($event)" [innerHTML]="facilitysection.heading"></h1>
+    <div class="content">
+        <h1 [contentEditable]="loginstatus" (input)="onheadingchange($event)" [innerHTML]="facilitysection.heading"></h1>
     <p [contentEditable]="loginstatus" (input)="oncontentchange($event)" [innerHTML]="facilitysection.content"></p>
+    </div>
     <div class="facilites">
         <a *ngFor="let fac of facilites" href="/facilites/{{fac.facilitesid}}"><app-facility-box [facility]="fac"></app-facility-box></a>
     </div>

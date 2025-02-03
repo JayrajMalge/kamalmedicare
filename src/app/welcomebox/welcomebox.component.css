@@ -20,8 +20,8 @@ h1{
     padding-bottom: 4%;
 }
 img{
-    width: 25%;
-    height: 57%;
+    width: 35%;
+    height: auto;
     padding-top: 4%;   
 }
 a{
@@ -47,10 +47,10 @@ p{
         padding: 0;
         width: 80%;
     }
-    img{
+    img,#welcomeimagePreview{
         transform :rotate(-20deg);
-        height: 40%;
-        width: 40%;
+        height: auto;
+        width: 45%;
         z-index: 0;
     }
 }
@@ -58,7 +58,7 @@ p{
 
 #welcomeimagePreview {
     width: 25%;
-    height: 57%;
+    height: auto;
     padding-top: 4%;   
     z-index: 0;
     object-fit: cover;
