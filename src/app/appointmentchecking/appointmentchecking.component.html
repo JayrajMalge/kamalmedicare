@@ -1,0 +1,10 @@
+<div class="main" *ngIf="operation=='Check Appointments'">
+   <div class="appoint" *ngFor="let appoint of appointments">
+      <h3>{{appoint.user?.username}}</h3>
+      <p>{{appoint.doctor?.name}}</p>
+      <p>{{appoint.appointmentdate}}</p>
+      <button (click)="acceptappointment(appoint)" [hidden]="spinner">Accept Appointment</button>
+      <button (click)="rejectappointment(appoint)" [hidden]="spinner">Reject Appointment</button>
+      <div class="spinner" [hidden]="!spinner"></div>
+   </div>
+</div>

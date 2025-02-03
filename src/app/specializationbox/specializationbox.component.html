@@ -1,18 +1,18 @@
 <div class="main">
     <div class="content">
-        <h1>specialization</h1>
-        <p>Our specialized cancer treatment hospital offers comprehensive,
-             patient-centered care with advanced therapies like immunotherapy, 
-             targeted treatments, and precision surgery. Combining state-of-the-art 
-             technology with a multidisciplinary team of expert oncologists and compassionate support 
-             staff, we create personalized treatment plans to ensure the best outcomes. With a focus on innovation, 
-             healing, and hope, we are dedicated to transforming the fight against cancer for every patient.</p>
+        <h1 [contentEditable]="loginstatus" (input)="onheadingchange($event)" [innerHTML]="heading.content"></h1>
+        <p [contentEditable]="loginstatus" (input)="oncontentchange($event)" [innerHTML]="content.content"></p>
     </div>
     <div class="specialization">
-        <app-specialization></app-specialization>
-        <app-specialization></app-specialization>
-        <app-specialization></app-specialization>
-        <app-specialization></app-specialization>
+        <app-specialization *ngFor="let spe of specializationarray| slice:0:3; let i = index" [Specialization]="spe"  ></app-specialization>
     </div>
-    <a href="/speacialization" id="viewmore">View More</a>
+    <div class="dialog-body">
+        <div class="carousel">
+           <button class="arrow-btn left" (click)="prevImage()">&lt;
+           </button>
+           <app-specialization [Specialization]="specializationarray[currentImageIndex]"></app-specialization>
+           <button class="arrow-btn right" (click)="nextImage()">&gt;
+           </button>
+        </div>
+     </div>
 </div>

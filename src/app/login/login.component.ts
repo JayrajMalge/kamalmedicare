@@ -1,12 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit,OnDestroy } from '@angular/core';
 import { UserServiceService } from '../user-service.service';
-import { response } from 'express';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { Subscription ,interval } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
+
 
 @Component({
   selector: 'app-login',
@@ -15,13 +14,21 @@ import { CookieService } from 'ngx-cookie-service';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit,OnDestroy{
   constructor(private usersevice : UserServiceService,private route : Router,private cookies : CookieService){}
   email : string = '';
   optstatus : boolean = true;
   sendingotp : boolean = true;
   otp : number = 0
+
+  timervalue : number = 60
+  timerstatus : boolean = true
+  timersubcription : Subscription | null = null
   optbuttontext : string = 'Get OTP';
+
+  ngOnInit(): void {
+    
+  }
   logingoogle(){
     window.location.href = 'http://localhost:5000/oauth2/authorization/google';
     this.usersevice.loginwithgoogle("getuser").subscribe(
@@ -40,6 +47,15 @@ export class LoginComponent {
             this.optstatus = false
             this.optbuttontext = 'Verfiy'
             this.sendingotp=true
+            const timer = interval(1000)
+            this.timerstatus = false
+            this.timersubcription = timer.subscribe(()=>{
+                if(this.timervalue > 0){
+                  this.timervalue--;
+                }else{
+                  this.stoptimer
+                }
+            })
             console.log(response)
           } ,(error)=>{
            console.log(error)
@@ -62,6 +78,14 @@ export class LoginComponent {
         }
       )
     }
+  }
+
+  stoptimer(){
+    this.timersubcription?.unsubscribe()
+    this.timerstatus = true
+  }
+  ngOnDestroy(): void {
+    this.stoptimer()
   }
 
   //logingoogle(){}

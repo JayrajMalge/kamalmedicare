@@ -1,26 +1,32 @@
+import { SafeResourceUrl, SafeUrl } from "@angular/platform-browser";
+import { blob } from "stream/consumers";
+
 // appointment.entity.ts
 export class Appointment {
     appointmentid!: number;
-    patient?: number;
-    doctor?: number;
+    user?: User;
+    doctor?: Doctor;
     appointmentdate?: Date;
     status?: 'Scheduled' | 'Completed' | 'Canceled';
   }
   
   // casestudy.entity.ts
   export class CaseStudy {
-    casestudyid!: number;
-    treatmentid?: number;
-    title?: string;
-    description?: string;
-    result?: string;
-    dateofcase?: Date;
+    casestudyid: number = 0;
+    treatment: Treatment = new Treatment();
+    title: string = '';
+    description: string = '';
+    result: string = '';
+    dateofcase: Date = new Date();
   }
   
   // casestudy-image.entity.ts
   export class CaseStudyImage {
-    imgid!: number;
-    image?: Blob;
+    imgid : number = 0;
+    casestudy : CaseStudy = new CaseStudy(); 
+    image: any[] = [];
+    imagetype : string = '';
+    imagename : string = '';
   }
   
   // doctor.entity.ts
@@ -30,54 +36,59 @@ export class Appointment {
     about?: string;
     email?: string;
     phone?: number;
-    profilephoto? : Blob;
-    schedule_from?: string;
-    schedule_to?: string;
+    profilephotot? : Blob;
+    schedulefrom?: string;
+    scheduleto?: string;
     joindate?: Date;
+    imagename : string = '';
+    imagetype : string = '';
     resigndate?: Date;
   }
   
   // doctor-specialization.entity.ts
   export class DoctorSpecialization {
     doctorspeacializationid!: number;
-    doctor?: number;
-    speacialization?: number;
+    doctor : Doctor = new Doctor();
+    speacialization : Specialization = new Specialization();
   }
   
   // education.entity.ts
   export class Education {
-    education_id!: number;
+    educationid!: number;
     degree?: string;
-    university_name?: string;
+    universityname?: string;
     fromdate?: Date;
     todate?: Date;
-    doctor?: number;
+    doctor: Doctor = new Doctor();
   }
   
   // experience.entity.ts
   export class Experience {
-    experience_id!: number;
+    experienceid!: number;
     field?: string;
-    hospital_name?: string;
+    hospitalname?: string;
     years?: number;
     fromdate?: Date;
     todate?: Date;
-    doctor?: number;
+    doctor: Doctor = new Doctor();
   }
   
   // facility.entity.ts
   export class Facility {
-    facilitesid!: number;
-    facility_name?: string;
-    description?: string;
-    availability?: 'yes' | 'no';
-    facilitytype?: string;
+    facilitesid : number = 0;
+    facilityname: string = '';
+    description: string = '';
+    availability : 'yes' | 'no' = 'yes';
+    facilitytype : string = '';
   }
   
   // facility-image.entity.ts
   export class FacilityImage {
-    imgid!: number;
-    image?: Blob;
+    imgid: number = 0;
+    image: Blob = new Blob();
+    facility : Facility = new Facility();
+    imagename : string = '';
+    imagetype : string = '';
   }
   
   // faq.entity.ts
@@ -93,7 +104,7 @@ export class Appointment {
   // news.entity.ts
   export class News {
     newsid!: number;
-    tittle?: string;
+    title?: string;
     description?: string;
     newsdate?: Date;
   }
@@ -101,7 +112,10 @@ export class Appointment {
   // news-image.entity.ts
   export class NewsImage {
     newsid?: number;
+    news? : News = new News();
     image?: Blob;
+    imagename : string = '';
+    imagetype : string = '';
   }
   
   // page.entity.ts
@@ -116,21 +130,22 @@ export class Appointment {
   
   // patient.entity.ts
   export class Patient {
-    patientid!: number;
-    name?: string;
-    age?: number;
-    gender?: 'Male' | 'Female';
-    phoneno?: bigint;
-    address?: string;
+    patientid? : number = 0;
+    name?: string = '';
+    age?: number = 0;
+    gender?: 'Male' | 'Female' = 'Male';
+    phoneno?: string = '123456';
+    address?: string = '';
   }
   
   // section.entity.ts
   export class Section {
     sectionid!: number;
-    pageid?: number;
-    heading?: string;
-    content?: string;
-    sectionmedia?: number;
+    heading: string = '';
+    content: string = '';
+    imgvid: any;
+    imagename : string = '';
+    imagetype : string = '';
   }
   
   // section-media.entity.ts
@@ -142,28 +157,29 @@ export class Appointment {
   
   // specialization.entity.ts
   export class Specialization {
-    speacialization_id!: number;
-    field_name?: string;
-    description?: string;
+    speacializationid: number = 0;
+    fieldname: string = '';
+    description: string = '';
   }
   
   // sub-specialization.entity.ts
   export class SubSpecialization {
-    subspeacializationid!: number;
-    name?: string;
-    description?: string;
-    speacialization?: number;
+    subspeacializationid : number = 0;
+    name: string = '';
+    description: string = '';
+    speacialization: Specialization = new Specialization();
   }
   
   // treatment.entity.ts
   export class Treatment {
-    treatmentid!: number;
-    tittle?: string;
-    description?: string;
-    doctor?: number;
-    patient?: number;
-    cost?: number;
-    tratmentdate?: Date;
+    treatmentid: number = 0;
+    title: string = '';
+    description: string = '';
+    doctor: number = 0;
+    patient : number = 0
+    patient1: Patient = new Patient();
+    cost: number = 0;
+    tratmentdate: Date = new Date();
   }
   
   // user.entity.ts
@@ -178,6 +194,56 @@ export class Appointment {
   }
   
   export class SubSpecializationimgvideo{
-    subspecializationimgvideoid? : 0;
-    imgvid? : Blob;
+    subspecialization : SubSpecialization = new SubSpecialization()
+    imgvid? : number = 0;
+    imagevideo : any;
+    imagename : string = '';
+    imagetype : string = '';
+  }
+
+  export class filehandle{
+       file? : File;
+       url? : SafeResourceUrl;
+  }
+
+  export class filemaking {
+      files : File[] = [];
+      uniqueid : number = 0
+      referenceid : number = 0;
+  }
+
+  export class Review{
+    reviewid : number = 0
+    patient : Patient = new Patient();
+    reviewdescription : string = ''
+  }
+
+  export class showtreatment{
+    treatment : Treatment = new Treatment();
+    casestudiesarray : showcasestudy[] = []; 
+  } 
+
+  export class showcasestudy{
+    casestudy : CaseStudy = new CaseStudy();
+    casestudyimages : filehandle[] = []
+  }
+
+  export class hospital{
+    id : number = 0;
+    title : string = '';
+    description : string = ''; 
+  }
+
+  export class disease{
+    diseaseid : number = 0;
+    name : string = '';
+    description : string = ''
+  }
+
+  export class diseaseimages{
+    diseaseimageid : number = 0;
+    image : Blob = new Blob();
+    imagename : string = ''
+    imagetype : string = ''
+    disease : disease = new disease()  
   }

@@ -14,6 +14,7 @@
             <form action="" class="loginform default1">
                 <input type="text" placeholder="enter email" name="email" [(ngModel)]="email">
                 <input type="number" placeholder="Enter OTP" name="otp" [hidden]="optstatus" [(ngModel)]="otp">
+                <label for="" [hidden]="timerstatus" *ngIf="timervalue > 0">Valid Time For OTP {{timervalue}}s</label>
                 <div class="spinner" [hidden]="sendingotp"></div>
                 <input type="submit" [value]="optbuttontext" [hidden]="!sendingotp" (click)="sendOtp()">
             </form>

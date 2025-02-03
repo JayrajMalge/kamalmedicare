@@ -1,8 +1,8 @@
 <div class="main">
     <div class="content">
-        <h3>name</h3>
-        <h4>specialization</h4>
-        <a href="/doctor/3">view profile</a>
+        <h3>{{doc.name}}</h3>
+        <a href="/doctor/{{doc.doctorid}}">view profile</a>
     </div>
-    <img src="../../assets/doctor3.png" alt="">
+    <img [src]="filehandle.url" alt="">
 </div>
+ 

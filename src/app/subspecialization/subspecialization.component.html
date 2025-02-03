@@ -2,26 +2,17 @@
 <div class="main">
     <div class="speacializations">
         <div class="content">
-            <h1>Heading</h1>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis molestiae eius totam doloribus? Numquam dignissimos possimus obcaecati illo at sint accusantium sapiente, tempora voluptates, libero atque velit? Tenetur, ex quibusdam.
-            Deserunt debitis, deleniti ipsa, autem est porro, dolorem numquam fuga iusto maiores nulla tenetur? Atque enim incidunt alias cumque numquam sint illum? Ipsam iste fugiat fuga nobis reprehenderit sapiente quam?
-            Porro totam fugit quisquam, voluptatem quis consequatur? Optio pariatur provident soluta est laborum? Facilis quo nesciunt vero numquam sapiente, voluptates eligendi, voluptatem vel commodi, suscipit iure odit tempora? Veritatis, animi.
-            Doloribus quisquam, laboriosam nam eum officia unde officiis esse qui provident quidem reiciendis nesciunt perferendis voluptatem dolore quam animi quo, aspernatur laudantium exercitationem! Quibusdam ut, atque tenetur numquam ab nihil!
-            Libero cupiditate sunt eveniet asperiores laboriosam exercitationem labore maxime excepturi, molestias ex ad adipisci error maiores recusandae veritatis deserunt optio consequatur ullam. Facere pariatur voluptatibus sed eius, totam ipsum alias!</p>
+            <h1>{{subspecializations.name}}</h1>
+            <p>{{subspecializations.description}}</p>
         </div>
         <div class="images">
-            <img src="../../assets/hospital.jpeg" alt="">
+            <img *ngFor="let sub of filehandles" [src]="sub.url" alt="">
         </div>
     </div>
     <div class="speacializationsdoctors">
         <h1>Doctors in specialized </h1>
         <div class="doctors">
-            <app-doctor-box></app-doctor-box>
-            <app-doctor-box></app-doctor-box>
-            <app-doctor-box></app-doctor-box>
-            <app-doctor-box></app-doctor-box>
-            <app-doctor-box></app-doctor-box>
-            <app-doctor-box></app-doctor-box>
+            <app-doctor-box *ngFor="let doc of Doctors" [doc]="doc"></app-doctor-box>
         </div>
     </div>
 </div>

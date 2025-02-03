@@ -1,0 +1,26 @@
+
+<div class="dialog-overlay" *ngIf="isOpen">
+    <div class="dialog-box">
+      <div class="dialog-header">
+        <h3 contenteditable [innerHTML]="appointmentsection.heading" (input)="onheadingchange($event)" style="color: #132743;"></h3>
+        <button class="close-btn" (click)="closeDialog()">&times;</button>
+      </div>
+      <div class="dialog-body">
+        <div class="main">
+            <form (submit)="submitapppointment()">
+                <label for="mail">Mail</label>
+                <input type="text" name="mail" [(ngModel)]="email" [ngModelOptions]="{standalone : true}">
+                <label for="doctor">Doctor</label>
+                <select name="doctor" [(ngModel)]="selecteddoctorid" [ngModelOptions]="{standalone : true}">
+                    <option *ngFor="let doc of doctorarray" [value]="doc.doctorid">{{doc.name}}</option>
+                </select>
+                <label for="appointmentdate">Appointment Date</label>
+                <input type="date" [(ngModel)]="appointment.appointmentdate" [ngModelOptions]="{standalone : true}">
+                <input type="submit" value="Get Appointment" [hidden]="spinner">
+                <div class="spinner" [hidden]="!spinner"></div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

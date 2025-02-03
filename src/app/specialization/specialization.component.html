@@ -1,6 +1,6 @@
 <div class="main">
-    <img src="../../assets/hospital2.jpeg" alt="">
-    <h3>tittle</h3>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut, quam culpa dignissimos praesentium eaque assumenda dolorem voluptas quasi</p>
-    <a href="/speacialization">View More</a>
+    <img [src]="filehandleinput.url" alt="">
+    <h3>{{Specialization.fieldname}}</h3>
+    <p>{{Specialization.description.substring(0,136)}}</p>
+    <a href="/speacialization/{{Specialization.speacializationid}}">View More</a>
 </div>

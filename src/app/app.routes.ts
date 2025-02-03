@@ -14,14 +14,19 @@ import { UpdatePageComponent } from './update-page/update-page.component';
 import { NewsBlogsPageComponent } from './news-blogs-page/news-blogs-page.component';
 import { BlogsNewsComponent } from './blogs-news/blogs-news.component';
 import { BlognewsComponent } from './blognews/blognews.component';
+import { DoctorsallComponent } from './doctorsall/doctorsall.component';
+import { UpdatesectionsComponent } from './updatesections/updatesections.component';
+import { DiseasePageComponent } from './disease-page/disease-page.component';
+import { AllspecializationsComponent } from './allspecializations/allspecializations.component';
+import { AlldiseasesComponent } from './alldiseases/alldiseases.component';
 
 export const routes: Routes = [
     {path : "",component : MainComponent},
     {path : "main",component : MainComponent},
     {path : "login",component : LoginComponent},
     {path : "profile",component : ProfileComponent},
-    {path : "speacialization", component : SpeacializationpageComponent},
-    {path : "subspeacialization/:speacializationid",component : SubspecializationComponent},
+    {path : "speacialization/:speacializationid", component : SpeacializationpageComponent},
+    {path : "subspeacialization/:subspeacializationid",component : SubspecializationComponent},
     {path : "facilites/:facilitesid",component : FacilitatesComponent},
     {path : "availablefacilites",component : FacilityComponent},
     {path : "doctor/:doctorid",component : DoctorPageComponent},
@@ -29,7 +34,12 @@ export const routes: Routes = [
     {path : "viewsreviews", component : ReviewsPageComponent},
     {path : "update-page",component : UpdatePageComponent},
     {path : "news-blogs",component : NewsBlogsPageComponent},
-    {path : "newsblog/:newsid:",component : BlognewsComponent}
+    {path : "newsblog/:newsid",component : BlognewsComponent},
+    {path : "alldoctors",component : DoctorsallComponent},
+    {path : "updatesections",component : UpdatesectionsComponent},
+    {path : "diseases/:diseaseid",component : DiseasePageComponent},
+    {path : "allspecializations",component : AllspecializationsComponent},
+    {path : "alldiseases",component : AlldiseasesComponent}
 ];
 
 @NgModule({

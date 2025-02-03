@@ -1,10 +1,8 @@
 <div class="main">
-    <img src="../../assets/hospital.jpeg" alt="">
+    <img [src]="filehandle.url" alt="">
     <div class="content">
-        <h4>name</h4>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis ipsum impedit, 
-            harum officia est odio corporis vel quasi suscipit, corrupti, sint eaque.
-            Facere dolor debitis aliquam veniam enim veritatis perspiciatis!</p>
-        <a href="/subspeacialization/2">view more</a>
+        <h4>{{subspeacialization.name}}</h4>
+        <p>{{subspeacialization.description}}</p>
+        <a href="/subspeacialization/{{subspeacialization.subspeacializationid}}">view more</a>
     </div>
 </div>

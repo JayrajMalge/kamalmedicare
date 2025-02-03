@@ -18,4 +18,14 @@ export class WebClientService {
   {
     return this.http.post<R>(this.API_URL+url,data,{headers:{TOKEN:this.TOKEN}});
   }
+
+  public delete<T>(url:string)
+  {
+    return this.http.delete<T>(this.API_URL+url,{headers:{TOKEN:this.TOKEN}});
+  }
+
+  public put<T,R>(url:string, data:T)
+  {
+    return this.http.put<R>(this.API_URL+url,data,{headers:{TOKEN:this.TOKEN}});
+  }
 }

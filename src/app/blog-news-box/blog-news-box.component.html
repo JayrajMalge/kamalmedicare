@@ -1,5 +1,7 @@
-<div class="main">
-    <h3 class="head">name</h3>
-    <img src="../../assets/hospital.jpeg" alt="">
-    <p class="show">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda beatae accusantium consequatur cupiditate ab pariatur voluptatem odit sint sapiente distinctio, veritatis, voluptates quibusdam repellendus maxime odio amet veniam similique alias?</p>
-</div>
+<a href="/newsblog/{{news.newsid}}">
+    <div class="main">
+        <h3 class="head">{{news.title}} sjsj</h3>
+        <img [src]="filehandle.url" alt="">
+        <p class="show">{{news.description}}</p>
+    </div>
+</a>

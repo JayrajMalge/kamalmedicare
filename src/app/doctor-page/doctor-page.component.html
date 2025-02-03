@@ -1,11 +1,11 @@
 <app-header></app-header>
 <div class="main">
     <div class="profile">
-        <img src="../../assets/doctor3.png" alt="">
+        <img [src]="filehandle.url" alt="">
         <div class="information">
-            <h1>Vaishnavi Kiran Malge</h1>
-            <p>vaishnavimalgegmail.com</p>
-            <p>L-78 Sundaram Nagar,Vijapur Road Solapur</p>
+            <h1>{{doctor.name}}</h1>
+            <p id="paragraph">{{doctor.email}}</p>
+            <p id="paragraph">91+ {{doctor.phone}}</p>
         </div>
     </div>
     
@@ -26,10 +26,59 @@
         class="tab-pane" 
         [class.active]="i === activeTab">
         <h2>{{ tab.label }}</h2>
-        <p>{{ tab.content }}</p>
+        <div class="content" *ngIf="tab.label=='Education'">
+          <div class="info" *ngFor="let edu of education">
+            <h4>{{edu.degree}}</h4>
+            <h4>{{edu.universityname}}<p>{{edu.fromdate}} to {{edu.todate}}</p></h4>
+         </div>
+       </div>
+       <div class="experiences" *ngIf="tab.label=='Experenice'">
+        <div class="content" *ngIf="tab.label=='Experenice'">
+          <div class="info" *ngFor="let exp of experiences">
+            <h4>{{exp.years}} years of Experience of in {{exp.field}} at {{exp.hospitalname}}</h4>
+         </div>
+       </div>
+       <h2 >Doctor Specialization</h2>
+       <div class="content">
+        <div class="specializations">
+          <h4 *ngFor="let spe of doctorspecializations">Specialized in {{spe.speacialization.fieldname}}</h4>
+        </div>
+       </div>
+       </div>
+     <div class="content" *ngIf="tab.label=='Treatment'">
+      <div class="treatments" *ngFor="let treat of showtreatmentsarray;let i = index">
+        <h4>{{treat.treatment.title}}</h4>
+        <p>{{treat.treatment.description}}</p>
+        <p>{{treat.treatment.tratmentdate}}</p>
+        <div class="patient">
+           <h4>{{treat.treatment.patient1.name}}</h4>
+           <p>{{treat.treatment.patient1.age}}</p>
+        </div>
+        <div class="casestudies" *ngFor="let case of treat.casestudiesarray">
+           <h4>{{case.casestudy.title}}</h4>
+           <p>{{case.casestudy.description}}</p>
+           <div class="finalresult">
+             <h4>final result</h4>
+            <p>{{case.casestudy.result}}</p>
+            <div class="images">
+               <img *ngFor="let img of case.casestudyimages" [src]="img.url" alt="">
+            </div>
+           </div>
+        </div>
+      </div>
+    </div>
       </div>
     </div>
   </div>
-  
-
+  <form action="">
+    <input type="submit" (click)="openAppointment()" value="Book Appoinment">
+  </form>
 </div>
+
+<app-appoinmentform 
+[isOpen]="isappointmentopen"
+(close)="handleAppointmentClose()"
+(formSubmit)="handleFormAppointmentSubmit()"
+></app-appoinmentform>
+
+<app-footer></app-footer>

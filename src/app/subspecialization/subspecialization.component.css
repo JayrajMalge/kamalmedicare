@@ -19,16 +19,19 @@
     text-align: center;
     padding-top: 4%;
     border-top: #ddd 4px solid;
-    background-color: #ddd;
+    background-color: #132743;
 }
 .images{
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-left: 8%;
+    padding-right: 6%;
     padding-bottom: 10%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 img{
-    width: 30%;
+    width: 25%;
     height: auto;
 }
 
@@ -45,7 +48,7 @@ img{
 
 
 h1 {
-    font-size: calc(10px + 1.2vw);
+    font-size: calc(22px + 1.2vw);
     margin-bottom: 0;
     color: #ffb5b5;
     text-decoration: underline;
@@ -53,6 +56,5 @@ h1 {
   }
   
   p {
-    font-size: calc(8px + 0.7vw); /* Base size 12px + scales with viewport width */
+    font-size: calc(15px + 0.7vw); /* Base size 12px + scales with viewport width */
   }
-  

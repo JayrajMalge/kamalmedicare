@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Review } from '../enities';
 
 @Component({
   selector: 'app-reviewbox',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './reviewbox.component.css'
 })
 export class ReviewboxComponent {
-
+  @Input() review : Review = new Review()
 }

@@ -23,7 +23,7 @@ img{
     position: relative;
     height: 63%;
     width: 55%;
-    z-index: 0;
+    z-index: 10;
     bottom: -7%;
     left: 25%;
 }
@@ -72,6 +72,7 @@ p{
 .views{
     width: 100%;
     height: 100%;
+    max-height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -132,33 +133,42 @@ svg{
     }
 }
 
-/*@media (max-width : 900px) {
-    .main{
-        width: 80%;
-        height: auto;
-        border-left: none;
-    }
+@media (max-width : 1000px) {
     img{
+        width: 100%;
         position: relative;
-        top: 30%;
-        height: 80%;
-        width: 70%;
+        right: 1rem;
     }
-    .right{
-       
-    }
-    a{
-        font-size: 0.9rem;
-    }
-    .options{
-        position: relative;
-        top: 20%;
+}
+
+@media (max-width : 610px) {
+    .views{
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
     }
     .fo{
-        gap: 0;
+        border-right: none;
+        width: 80%;
+        gap: 0.5rem;
+        justify-content: start;
+        margin-left: 2rem;
+        border-bottom: #ffb5b5 3px solid;
     }
-    svg{
-        height: 1.2rem;
-        width: 1.2rem;
-    }
-}*/
+}
+
+#imagePreview {
+    position: relative;
+    height: 63%;
+    min-width: 55%;
+    max-width: 100%;
+    z-index: 0;
+    bottom: -7%;
+    left: 25%;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 10px;
+}
+#fileInput {
+    display: none;
+}

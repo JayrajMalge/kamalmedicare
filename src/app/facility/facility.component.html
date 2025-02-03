@@ -1,15 +1,9 @@
 <app-header></app-header>
 <div class="main">
-    <h1>Facilities We Provide</h1>
+    <h1 [contentEditable]="loginstatus" (input)="onheadingchange($event)" [innerHTML]="facilitysection.heading"></h1>
+    <p [contentEditable]="loginstatus" (input)="oncontentchange($event)" [innerHTML]="facilitysection.content"></p>
     <div class="facilites">
-        <a href="/facilites/8"><app-facility-box></app-facility-box></a>
-        <a href="/facilites/8"><app-facility-box></app-facility-box></a>
-        <a href="/facilites/8"><app-facility-box></app-facility-box></a>
-        <a href="/facilites/8"><app-facility-box></app-facility-box></a>
-        <a href="/facilites/8"><app-facility-box></app-facility-box></a>
-        <a href="/facilites/8"><app-facility-box></app-facility-box></a>
-        <a href="/facilites/8"><app-facility-box></app-facility-box></a>
-        <a href="/facilites/8"><app-facility-box></app-facility-box></a>
+        <a *ngFor="let fac of facilites" href="/facilites/{{fac.facilitesid}}"><app-facility-box [facility]="fac"></app-facility-box></a>
     </div>
 </div>
 <app-footer></app-footer>

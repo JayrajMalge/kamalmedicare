@@ -1,13 +1,10 @@
 <div class="main">
     <div class="content">
-       <h1>News And Bloges</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adError aut, aliquid dolorum possimus autem doloremque aperiam cum animi libero, id eius nihil!</p>
+      <h1 [contentEditable]="loginstatus" (input)="onheadingchange($event)" [innerHTML]="heading.content"></h1>
+      <p [contentEditable]="loginstatus" (input)="oncontentchange($event)" [innerHTML]="content.content"></p>
    </div>
    <div class="bloges">
-      <a href="/newsblog/3"><app-blog-news-box></app-blog-news-box></a>
-      <a href="/newsblog/3"><app-blog-news-box></app-blog-news-box></a>
-      <a href="/newsblog/3"><app-blog-news-box></app-blog-news-box></a>
-      <a href="/newsblog/3"><app-blog-news-box></app-blog-news-box></a>
+      <app-blog-news-box *ngFor="let news of newsarray" [news]="news"></app-blog-news-box>
    </div>
    <a href="/news-blogs" id="button">view mores</a>
 </div>

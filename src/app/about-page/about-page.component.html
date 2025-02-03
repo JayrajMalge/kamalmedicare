@@ -1,29 +1,39 @@
 <app-header></app-header>
 <div class="main">
-    <div class="content">
-        <h1>About Us</h1>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur autem pariatur nesciunt deleniti cupiditate dolorem praesentium consequuntur iusto repellat asperiores quo dolorum optio, reprehenderit reiciendis quam alias, quas impedit animi.
-        Quae deserunt assumenda, eveniet id ea ducimus repellat facilis. Cum, suscipit magni dolor perferendis placeat velit ratione laborum error fugit quidem quas iure cumque? Repellendus quod id dolorum voluptatibus voluptatem!
-        Quibusdam dolorem deserunt odio et quos sed exercitationem suscipit. Rem reprehenderit id laborum fuga, perferendis laboriosam et aut eveniet quaerat veniam, magnam dolorem dolorum voluptate, eos culpa impedit est ipsum.
-        Recusandae vero quod repudiandae officiis placeat consectetur ducimus. Itaque dolor nostrum alias optio quod dignissimos laudantium ipsa commodi incidunt minus molestias, est minima ex ut veniam, quos tempora, cupiditate adipisci.
-        Tempore voluptas nostrum autem deserunt. Nostrum magni harum doloremque vitae labore voluptatibus accusantium non at inventore, modi sit possimus, vero corrupti consequuntur ratione, aut quas tempore laboriosam? Dignissimos, odit qui.
-        Beatae quos iure quae dolorum esse, inventore deleniti! Quasi commodi a praesentium in ex ullam, ab et, corrupti alias earum eius veritatis sit cupiditate inventore recusandae quidem quas deleniti quos.
-        Necessitatibus nam corporis ullam facilis odit laboriosam quae minus ipsam assumenda temporibus laudantium accusantium repudiandae, beatae quia, repellendus a sequi sapiente atque eius veritatis. Autem maiores nobis accusamus eos quibusdam!
-        Quisquam porro aliquam beatae amet, exercitationem corrupti veritatis fuga dicta repudiandae nulla delectus explicabo ducimus facere numquam temporibus, tempore maxime ipsa ex qui vel? Ex ipsum repellat maiores incidunt accusamus.</p>
+    <div class="about">
+        <div class="content">
+            <h1 [contentEditable]="loginstatus" [innerHTML]="about.heading" (input)="onaboutheadingchange($event)"></h1>
+            <p  [contentEditable]="loginstatus"  [innerHTML]="about.content" (input)="onaboutcontentchange($event)"></p>
+        </div>
+        <input type="file" id="fileInput" (change)="onchange($event)" hidden accept="image/*">
+        <img [src]="aboutfile.url" 
+        *ngIf="loginstatus"
+            id="imagePreview" 
+            alt="Click to upload"
+            (click)="triggerFileInput()">
+        <img *ngIf="!loginstatus" [src]="aboutfile.url" alt="" id="imagePreview">
     </div>
     <div class="boxes">
         <div class="box">
-           <h4>Vision</h4>
-           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea a ab consequatur itaque deleniti nemo recusandae quae id quos earum, sed ut. Reprehenderit optio, adipisci esse aliquid atque doloribus nam.</p>
+           <h4 [contentEditable]="loginstatus" [innerHTML]="mission.heading" (input)="onmissionheadingchange($event)"></h4>
+           <p [contentEditable]="loginstatus" [innerHTML]="mission.content" (input)="onmissioncontentchange($event)"></p>
         </div>
         <div class="box">
-            <h4>Mission</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea a ab consequatur itaque deleniti nemo recusandae quae id quos earum, sed ut. Reprehenderit optio, adipisci esse aliquid atque doloribus nam.</p>
+            <h4 [contentEditable]="loginstatus" [innerHTML]="vision.heading" (input)="onvisionheadingchange($event)"></h4>
+            <p [contentEditable]="loginstatus" [innerHTML]="vision.content" (input)="onvisioncontentchange($event)"></p>
          </div>
          <div class="box">
-            <h4>Goal</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea a ab consequatur itaque deleniti nemo recusandae quae id quos earum, sed ut. Reprehenderit optio, adipisci esse aliquid atque doloribus nam.</p>
+            <h4 [contentEditable]="loginstatus" [innerHTML]="goal.heading" (input)="ongoalheadingchange($event)"></h4>
+            <p [contentEditable]="loginstatus" [innerHTML]="goal.content" (input)="ongoalcontentchange($event)"></p>
          </div>
     </div>
 </div>
 <app-footer></app-footer>
+<!--
+<input type="file" id="fileInput" accept="image/*" onchange="previewImage(event)">
+<img id="imagePreview" src="../../assets/doctor1new.png" alt="Click to upload" onclick="document.getElementById('fileInput').click()">
+
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem ea animi laboriosam molestias, error voluptatum iure deleniti minus tempora? Totam cumque maxime omnis laudantium aperiam explicabo eveniet! Optio, incidunt amet?
+Ipsum aut eius, expedita, incidunt ab fugit pariatur, iusto labore voluptates adipisci velit illo reprehenderit. Provident voluptatibus tempora quod sint aut recusandae repudiandae nihil perferendis iusto, assumenda dolorum deleniti. Natus!
+-->

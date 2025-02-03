@@ -1,19 +1,11 @@
 <app-header></app-header>
 <div class="main">
     <div class="content">
-        <h2>speacialization</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Doloremque quam nihil atque dicta possimus nulla error quia. 
-            Eaque tempora repellat inventore accusantium, veniam dicta sed 
-            minus quaerat veritatis eos? Et?Lorem ipsum dolor sit amet consectetur, 
-            adipisicing elit. Unde, iste est minus magnam necessitatibus voluptatum aliquid amet 
-            suscipit consectetur illo soluta, deserunt voluptatem quis corrupti fugiat totam fuga,
-             sapiente possimus. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto aut 
-             fugit veniam laboriosam maiores at odit! Obcaecati, explicabo necessitatibus magnam ipsa
-              dolorum voluptate rem quos cupiditate delectus sunt molestias minima?</p>
+        <h2>{{specialization.fieldname}}</h2>
+        <p>{{specialization.description}}</p>
     </div>
     <div class="speacializations">
-        <app-speacializationpagefull></app-speacializationpagefull>
+        <app-speacializationpagefull *ngFor="let sub of subspecialization" [subspeacialization]="sub"></app-speacializationpagefull>
     </div>
 </div>
 <app-footer></app-footer>
